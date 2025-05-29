@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Lock, ChevronRight } from 'lucide-react';
+import { Phone, Lock, ChevronRight, MessageSquareText } from 'lucide-react';
 
 interface LoginPageProps {
   onLogin: (phone: string) => void;
@@ -57,8 +57,16 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center p-6">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">欢迎使用信通</h1>
+      <div className="text-center mb-12">
+        {/* Logo Section */}
+        <div className="flex flex-col items-center justify-center mb-6">
+          <div className="w-20 h-20 bg-gradient-to-br from-purple-600 via-blue-500 to-teal-400 rounded-2xl shadow-lg flex items-center justify-center mb-4 transform hover:rotate-6 transition-transform duration-300">
+            <MessageSquareText className="h-12 w-12 text-white" />
+          </div>
+          <div className="bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 text-transparent bg-clip-text">
+            <h1 className="text-4xl font-bold mb-2">信通</h1>
+          </div>
+        </div>
         <p className="text-white/70">安全、匿名的通信工具</p>
       </div>
 
