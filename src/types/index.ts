@@ -12,3 +12,8 @@ export interface Settings {
   notifications: boolean;
   saveHistory: boolean;
 }
+
+export interface User {
+  phone: string;
+  isLoggedIn: boolean;
+}

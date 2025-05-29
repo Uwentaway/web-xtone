@@ -1,30 +1,32 @@
 import React from 'react';
-import { Settings, Message } from '../types';
-import { User, Settings as SettingsIcon, ChevronRight } from 'lucide-react';
+import { Settings, Message, User } from '../types';
+import { User as UserIcon, Settings as SettingsIcon, ChevronRight } from 'lucide-react';
 
 interface ProfilePageProps {
   messages: Message[];
   settings: Settings;
   onSettingsChange: (settings: Settings) => void;
   onNavigate: (page: 'settings') => void;
+  user: User;
 }
 
 const ProfilePage: React.FC<ProfilePageProps> = ({ 
   messages,
   settings,
-  onNavigate
+  onNavigate,
+  user
 }) => {
   return (
     <div className="space-y-6">
-      <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-lg rounded-xl shadow-lg p-6">
+      <div className="bg-white/10 backdrop-blur-lg rounded-xl shadow-lg p-6">
         {/* Account Section */}
         <div className="flex items-center space-x-4 mb-8">
           <div className="bg-purple-600/20 p-4 rounded-full">
-            <User className="h-8 w-8 text-white" />
+            <UserIcon className="h-8 w-8 text-white" />
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-white">未登录</h2>
-            <p className="text-white/70">登录后可以同步消息记录</p>
+            <h2 className="text-xl font-semibold text-white">{user.phone}</h2>
+            <p className="text-white/70">已登录</p>
           </div>
         </div>
 
@@ -43,22 +45,12 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
             </p>
           </div>
         </div>
-
-        {/* Account Actions */}
-        <div className="space-y-2">
-          <button className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition-colors duration-200">
-            登录账号
-          </button>
-          <button className="w-full bg-white/10 text-white py-3 px-4 rounded-lg hover:bg-white/20 transition-colors duration-200">
-            注册账号
-          </button>
-        </div>
       </div>
 
       {/* Settings Link */}
       <button
         onClick={() => onNavigate('settings')}
-        className="w-full bg-white/10 dark:bg-gray-800/10 backdrop-blur-lg rounded-xl shadow-lg p-6 flex items-center justify-between group hover:bg-white/20 transition-colors duration-200"
+        className="w-full bg-white/10 backdrop-blur-lg rounded-xl shadow-lg p-6 flex items-center justify-between group hover:bg-white/20 transition-colors duration-200"
       >
         <div className="flex items-center space-x-3">
           <SettingsIcon className="h-5 w-5 text-white" />

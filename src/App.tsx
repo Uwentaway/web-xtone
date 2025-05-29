@@ -3,14 +3,15 @@ import Layout from './components/Layout';
 import MessagesPage from './pages/MessagesPage';
 import ProfilePage from './pages/ProfilePage';
 import SettingsPage from './pages/SettingsPage';
-import { Message, Settings } from './types';
+import LoginPage from './pages/LoginPage';
+import { Message, Settings, User } from './types';
 import { sendMessage } from './utils/api';
 
-type Page = 'messages' | 'profile' | 'settings';
+type Page = 'messages' | 'profile' | 'settings' | 'login';
 
 function App() {
   // State
-  const [activePage, setActivePage] = useState<Page>('messages');
+  const [activePage, setActivePage] = useState<Page>('login');
   const [settings, setSettings] = useState<Settings>({
     theme: 'light',
     language: 'zh-CN',
@@ -18,6 +19,10 @@ function App() {
     saveHistory: true,
   });
   const [messages, setMessages] = useState<Message[]>([]);
+  const [user, setUser] = useState<User>({
+    phone: '',
+    isLoggedIn: false
+  });
 
   // Check system preference for dark mode
   useEffect(() => {
@@ -65,9 +70,21 @@ function App() {
     }
   };
 
+  const handleLogin = (phone: string) => {
+    setUser({
+      phone,
+      isLoggedIn: true
+    });
+    setActivePage('messages');
+  };
+
   const handleNavigate = (page: Page) => {
     setActivePage(page);
   };
+
+  if (!user.isLoggedIn) {
+    return <LoginPage onLogin={handleLogin} />;
+  }
 
   return (
     <Layout 
@@ -87,6 +104,7 @@ function App() {
           settings={settings}
           onSettingsChange={setSettings}
           onNavigate={handleNavigate}
+          user={user}
         />
       ) : (
         <SettingsPage
