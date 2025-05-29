@@ -44,9 +44,7 @@ const Layout: React.FC<LayoutProps> = ({
 
       {/* Main Content */}
       <main className="container mx-auto px-4 pt-24 pb-24">
-        <div className="bg-white/10 dark:bg-gray-900/10 backdrop-blur-lg rounded-xl shadow-xl">
-          {children}
-        </div>
+        {children}
       </main>
 
       {/* Footer Navigation */}
