@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import MessagesPage from './pages/MessagesPage';
 import ProfilePage from './pages/ProfilePage';
+import SettingsPage from './pages/SettingsPage';
 import { Message, Settings } from './types';
 import { sendMessage } from './utils/api';
 
+type Page = 'messages' | 'profile' | 'settings';
+
 function App() {
   // State
-  const [activeTab, setActiveTab] = useState<'messages' | 'profile'>('messages');
+  const [activePage, setActivePage] = useState<Page>('messages');
   const [settings, setSettings] = useState<Settings>({
     theme: 'light',
     language: 'zh-CN',
@@ -62,23 +65,34 @@ function App() {
     }
   };
 
+  const handleNavigate = (page: Page) => {
+    setActivePage(page);
+  };
+
   return (
     <Layout 
-      activeTab={activeTab}
-      onTabChange={setActiveTab}
+      activeTab={activePage === 'settings' ? 'profile' : activePage}
+      onTabChange={handleNavigate}
       settings={settings}
     >
-      {activeTab === 'messages' ? (
+      {activePage === 'messages' ? (
         <MessagesPage 
           messages={messages}
           saveMessages={settings.saveHistory}
           onSendMessage={handleSendMessage}
         />
-      ) : (
+      ) : activePage === 'profile' ? (
         <ProfilePage 
           messages={messages}
           settings={settings}
           onSettingsChange={setSettings}
+          onNavigate={handleNavigate}
+        />
+      ) : (
+        <SettingsPage
+          settings={settings}
+          onSettingsChange={setSettings}
+          onBack={() => handleNavigate('profile')}
         />
       )}
     </Layout>
