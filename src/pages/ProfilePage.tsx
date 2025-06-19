@@ -44,7 +44,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
           </div>
           <div>
             <h2 className="text-xl font-semibold text-white">{user.phone}</h2>
-            <p className="text-white/70">余额: ¥{user.balance.toFixed(2)}</p>
+            <p className="text-white/70">信通用户</p>
           </div>
         </div>
       </div>

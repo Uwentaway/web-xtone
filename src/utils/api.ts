@@ -1,6 +1,7 @@
 // Simulated API functions
 import { v4 as uuidv4 } from 'uuid';
 import { Message, Order, Bill } from '../types';
+import { getWechatPayConfig, invokeWechatPay } from './wechat';
 
 // 计算短信费用
 export function calculateSMSCost(content: string): number {
@@ -27,21 +28,31 @@ export async function createOrder(userId: string, amount: number, description: s
 }
 
 // 微信支付
-export async function wechatPay(orderId: string, amount: number): Promise<{ success: boolean; transactionId?: string }> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      // 模拟支付成功率90%
-      const success = Math.random() < 0.9;
-      if (success) {
-        resolve({
-          success: true,
-          transactionId: `wx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
-        });
-      } else {
-        resolve({ success: false });
-      }
-    }, 2000);
-  });
+export async function processWechatPayment(orderId: string, amount: number): Promise<{ success: boolean; transactionId?: string; error?: string }> {
+  try {
+    // 1. 获取微信支付配置
+    const payConfig = await getWechatPayConfig(orderId, amount);
+    
+    // 2. 调起微信支付
+    const payResult = await invokeWechatPay(payConfig);
+    
+    if (payResult.success) {
+      return {
+        success: true,
+        transactionId: `wx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      };
+    } else {
+      return {
+        success: false,
+        error: payResult.error || '支付失败'
+      };
+    }
+  } catch (error) {
+    return {
+      success: false,
+      error: '支付异常，请重试'
+    };
+  }
 }
 
 // 发送短信
@@ -83,11 +94,11 @@ export async function sendMessage(userId: string, phone: string, message: string
     // 1. 创建订单
     const order = await createOrder(userId, cost, `发送短信 - ${message.length}字符`);
     
-    // 2. 支付
-    const paymentResult = await wechatPay(order.id, cost);
+    // 2. 微信支付
+    const paymentResult = await processWechatPayment(order.id, cost);
     
     if (!paymentResult.success) {
-      throw new Error('支付失败');
+      throw new Error(paymentResult.error || '支付失败');
     }
     
     // 3. 创建消息记录

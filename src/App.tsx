@@ -80,7 +80,7 @@ function App() {
       id: userId,
       phone,
       isLoggedIn: true,
-      balance: 10.00 // 模拟初始余额
+      balance: 0 // 不再显示余额，直接使用微信支付
     });
     setActivePage('messages');
   };
