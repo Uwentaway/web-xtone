@@ -1,5 +1,6 @@
 // 微信支付相关配置和方法
 import wx from 'weixin-js-sdk';
+import { getWechatPayConfig } from './api';
 
 // 微信支付配置（需要从后端获取）
 interface WechatPayConfig {
@@ -30,23 +31,27 @@ export function invokeWechatPay(config: WechatPayConfig): Promise<{ success: boo
   });
 }
 
-// 获取微信支付配置（需要调用后端API）
-export async function getWechatPayConfig(orderId: string, amount: number): Promise<WechatPayConfig> {
-  // 这里应该调用后端API获取支付配置
-  // const response = await fetch('/api/wechat/pay/config', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({ orderId, amount })
-  // });
-  // return response.json();
-  
-  // 临时模拟数据
-  return {
-    appId: 'your_app_id',
-    timeStamp: Date.now().toString(),
-    nonceStr: Math.random().toString(36).substr(2, 15),
-    package: `prepay_id=wx${Date.now()}`,
-    signType: 'MD5',
-    paySign: 'mock_pay_sign'
-  };
+// 处理微信支付流程
+export async function processWechatPayment(orderId: string, amount: number): Promise<{ success: boolean; error?: string }> {
+  try {
+    // 1. 获取微信支付配置
+    const configResponse = await getWechatPayConfig(orderId, amount);
+    
+    if (!configResponse.success) {
+      return {
+        success: false,
+        error: configResponse.message || '获取支付配置失败'
+      };
+    }
+
+    // 2. 调起微信支付
+    const payResult = await invokeWechatPay(configResponse.data);
+    
+    return payResult;
+  } catch (error) {
+    return {
+      success: false,
+      error: '支付异常，请重试'
+    };
+  }
 }
