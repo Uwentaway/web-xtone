@@ -11,14 +11,6 @@ interface WechatPayConfig {
   paySign: string;
 }
 
-// 微信商户配置（后端配置）
-export const WECHAT_MERCHANT_CONFIG = {
-  // 这些配置应该在后端设置，前端不应该暴露
-  merchantId: process.env.WECHAT_MERCHANT_ID || '', // 微信商户号
-  merchantKey: process.env.WECHAT_MERCHANT_KEY || '', // 商户密钥
-  notifyUrl: process.env.WECHAT_NOTIFY_URL || '', // 支付回调地址
-};
-
 // 调起微信支付
 export function invokeWechatPay(config: WechatPayConfig): Promise<{ success: boolean; error?: string }> {
   return new Promise((resolve) => {
