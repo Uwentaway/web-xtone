@@ -1,0 +1,222 @@
+.messages-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding-bottom: 100px;
+}
+
+.error-message {
+  background: rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.error-text {
+  color: white;
+  font-size: 14px;
+}
+
+.textarea-field {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.message-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.message-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.action-btn {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  color: white;
+}
+
+.char-count {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.scheduler-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.scheduler-title {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.scheduler-inputs {
+  display: flex;
+  gap: 12px;
+}
+
+.scheduler-input {
+  flex: 1;
+}
+
+.scheduler-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.picker-view {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.picker-text {
+  color: white;
+  font-size: 14px;
+}
+
+.cost-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.cost-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.cost-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}
+
+.cost-amount {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.cost-note {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+.send-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.send-btn:disabled {
+  opacity: 0.5;
+}
+
+.section-title {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.message-phone {
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.message-time {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+.message-content {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.message-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-cost {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+.message-status {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.message-status.sent {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.message-status.failed {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.message-status.pending {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+}
