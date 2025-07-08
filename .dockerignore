@@ -1,0 +1,64 @@
+# 依赖目录
+node_modules
+backend/vendor
+
+# 构建产物
+dist
+build
+*.exe
+*.dll
+*.so
+*.dylib
+
+# 测试文件
+*.test
+coverage.txt
+
+# 临时文件
+*.tmp
+*.temp
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# IDE文件
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# Git文件
+.git
+.gitignore
+
+# 环境文件
+.env
+.env.local
+.env.production
+
+# 证书文件
+certs/
+ssl/
+
+# 数据库文件
+*.sql
+*.db
+*.sqlite
+
+# Docker文件
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# 文档
+README.md
+*.md
+
+# 其他
+.bolt/
