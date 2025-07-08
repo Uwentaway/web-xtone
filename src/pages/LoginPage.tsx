@@ -43,10 +43,9 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           <div className="w-20 h-20 bg-white/10 backdrop-blur-lg rounded-2xl shadow-lg flex items-center justify-center mb-4 transform hover:rotate-6 transition-transform duration-300">
             <MessageSquareText className="h-12 w-12 text-white" />
           </div>
-          <h1 className="text-4xl font-bold mb-2 text-white">信通</h1>
           <h1 className="text-4xl font-bold mb-2 text-white">飞鸟飞信</h1>
         </div>
-        <p className="text-white/70">安全、匿名的通信工具</p>
+        <p className="text-white/70">安全、匿名的传话助手</p>
       </div>
 
       <div className="bg-white/10 backdrop-blur-lg rounded-xl shadow-lg p-6 space-y-6">
