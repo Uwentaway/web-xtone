@@ -5,7 +5,7 @@ export const ALIYUN_SMS_CONFIG = {
   // 这些配置应该在后端设置，前端不应该暴露
   accessKeyId: process.env.ALIYUN_ACCESS_KEY_ID || '',
   accessKeySecret: process.env.ALIYUN_ACCESS_KEY_SECRET || '',
-  signName: process.env.ALIYUN_SMS_SIGN_NAME || '信通',
+  signName: process.env.ALIYUN_SMS_SIGN_NAME || '飞鸟飞信',
   templateCode: process.env.ALIYUN_SMS_TEMPLATE_CODE || 'SMS_ANONYMOUS_MSG',
   endpoint: 'https://dysmsapi.aliyuncs.com'
 };

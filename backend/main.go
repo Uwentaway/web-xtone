@@ -93,7 +93,7 @@ func main() {
 	r.GET("/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"status": "ok",
-			"message": "Anonymous Messaging Backend is running",
+			"message": "飞鸟飞信 Backend is running",
 		})
 	})
 

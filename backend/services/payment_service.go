@@ -85,7 +85,7 @@ func (p *PaymentService) GetWechatPayConfig(orderID string, amount float64) (*We
 	req := jsapi.PrepayRequest{
 		Appid:       core.String(p.appID),
 		Mchid:       core.String(p.merchantID),
-		Description: core.String("信通短信服务"),
+		Description: core.String("飞鸟飞信短信服务"),
 		OutTradeNo:  core.String(orderID),
 		NotifyUrl:   core.String("http://127.0.0.1:8081/api/payment/wechat/notify"),
 		Amount: &jsapi.Amount{

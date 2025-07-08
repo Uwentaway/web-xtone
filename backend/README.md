@@ -1,6 +1,6 @@
-# Anonymous Messaging Backend
+# 飞鸟飞信 Backend
 
-这是一个用 Go 语言开发的匿名短信发送服务后端。
+这是一个用 Go 语言开发的飞鸟飞信匿名短信发送服务后端。
 
 ## 功能特性
 

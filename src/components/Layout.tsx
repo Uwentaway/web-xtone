@@ -37,7 +37,7 @@ const Layout: React.FC<LayoutProps> = ({
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center">
             <MessageSquareText className="h-6 w-6 text-white" />
-            <h1 className="ml-2 text-xl font-bold text-white">信通</h1>
+            <h1 className="ml-2 text-xl font-bold text-white">飞鸟飞信</h1>
           </div>
         </div>
       </header>

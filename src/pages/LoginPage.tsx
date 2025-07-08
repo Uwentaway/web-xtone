@@ -44,6 +44,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             <MessageSquareText className="h-12 w-12 text-white" />
           </div>
           <h1 className="text-4xl font-bold mb-2 text-white">信通</h1>
+          <h1 className="text-4xl font-bold mb-2 text-white">飞鸟飞信</h1>
         </div>
         <p className="text-white/70">安全、匿名的通信工具</p>
       </div>
